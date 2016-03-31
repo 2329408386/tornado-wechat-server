@@ -3,6 +3,7 @@
 import tornado.ioloop
 import tornado.web
 from setting import settings
+from wechat.route import urls
 
 __author__ = 'qingfeng'
 

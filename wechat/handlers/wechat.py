@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # coding=utf-8
-import tornado.web
+from wechat.core.handler import BaseHandler
 
 __author__ = 'qingfeng'
 
 
-class BaseHandler(tornado.web.RequestHandler):
+class WechatHandler(BaseHandler):
     def data_received(self, chunk):
         pass
 
     def get(self, *args, **kwargs):
-        self.write("test")
+        hook.add()
+        pass
