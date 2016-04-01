@@ -7,7 +7,7 @@ __author__ = 'qingfeng'
 class Hook(object):
     pass
 
-    def add(self):
+    def add(self, hook):
         pass
 
     def listen(self):
