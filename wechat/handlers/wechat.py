@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-from wechat.core.handler import BaseHandler
-from wechat.hook import Hook
+from ..core.handler import BaseHandler
 
 __author__ = 'qingfeng'
 
