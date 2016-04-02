@@ -3,4 +3,4 @@
 
 __author__ = 'qingfeng'
 
-TOKEN = ''
+TOKEN = 'dubUq1ngfengt0ken'
