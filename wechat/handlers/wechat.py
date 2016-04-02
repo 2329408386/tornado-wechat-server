@@ -8,7 +8,7 @@ __author__ = 'qingfeng'
 
 
 class WechatHandler(BaseHandler):
-
+    responseStr = ""
     def data_received(self, chunk):
         pass
 
@@ -16,7 +16,8 @@ class WechatHandler(BaseHandler):
         echostr = self.get_argument('echostr', '')
         if self.check_signature():
             self.write(echostr)
-        pass
+        else:
+            self.write(self.responseStr)
 
     def check_signature(self):
         signature = self.get_argument('signature', '')

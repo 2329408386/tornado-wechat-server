@@ -15,6 +15,6 @@ ADD . /src
 
 RUN cd /src; pip install -r requirements.txt
 
-EXPOSE 9999
+EXPOSE 80
 
 CMD ["python", "/src/app.py"]
