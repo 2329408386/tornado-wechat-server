@@ -48,6 +48,6 @@ class WechatHandler(BaseHandler):
 
         message_type = MESSAGE_TYPES.get(result['type'], UnknownMessage)
         message = message_type(result)
-        self.responseStr = TextReply(message, message.source)
+        self.responseStr = TextReply(message, message.source).render()
         self.write(self.responseStr)
         pass
