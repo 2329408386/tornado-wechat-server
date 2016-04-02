@@ -43,10 +43,11 @@ class WechatHandler(BaseHandler):
 
         xml_str = XMLStore(xmlstring=xml_data)
         result = xml_str.xml2dict
+        print(result)
         result['type'] = result.pop('MsgType').lower()
 
         message_type = MESSAGE_TYPES.get(result['type'], UnknownMessage)
         message = message_type(result)
-        self.responseStr = TextReply(message, result['Content'])
+        self.responseStr = TextReply(message, message.source)
         self.write(self.responseStr)
         pass
