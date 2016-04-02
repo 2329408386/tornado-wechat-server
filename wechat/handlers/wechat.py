@@ -3,12 +3,16 @@
 import hashlib
 from configs import TOKEN
 from ..core.handler import BaseHandler
+from ..lib.parser import XMLStore
+from ..messages import MESSAGE_TYPES, UnknownMessage
+from ..reply import TextReply
 
 __author__ = 'qingfeng'
 
 
 class WechatHandler(BaseHandler):
     responseStr = ""
+
     def data_received(self, chunk):
         pass
 
@@ -31,3 +35,18 @@ class WechatHandler(BaseHandler):
         if hashcode == signature:
             return True
         return False
+
+    def post(self, *args, **kwargs):
+        if self.check_signature() is False:
+            self.write(self.responseStr)
+        xml_data = self.request.body
+
+        xml_str = XMLStore(xmlstring=xml_data)
+        result = xml_str.xml2dict
+        result['type'] = result.pop('MsgType').lower()
+
+        message_type = MESSAGE_TYPES.get(result['type'], UnknownMessage)
+        message = message_type(result)
+        self.responseStr = TextReply(message, result['Content'])
+        self.write(self.responseStr)
+        pass

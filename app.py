@@ -8,7 +8,6 @@ from wechat.route import urls
 __author__ = 'qingfeng'
 
 if __name__ == "__main__":
-    print(urls)
     application = tornado.web.Application(
         handlers=urls,
         **settings
