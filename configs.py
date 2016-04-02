@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
+import os
 
 __author__ = 'qingfeng'
 
-TOKEN = 'dubUq1ngfengt0ken'
+TOKEN = os.getenv('WECHAT_TOKEN', 'wechattestt0ken')

@@ -15,6 +15,8 @@ ADD . /src
 
 RUN cd /src; pip install -r requirements.txt
 
+ENV WECHAT_TOKEN wechattestt0ken
+
 EXPOSE 80
 
 CMD ["python", "/src/app.py"]
