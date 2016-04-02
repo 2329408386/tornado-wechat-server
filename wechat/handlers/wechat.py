@@ -3,9 +3,9 @@
 import hashlib
 from configs import TOKEN
 from ..core.handler import BaseHandler
-from ..lib.parser import XMLStore
 from ..messages import MESSAGE_TYPES, UnknownMessage
 from ..reply import TextReply
+from ..lib.parser import XMLStore
 
 __author__ = 'qingfeng'
 
