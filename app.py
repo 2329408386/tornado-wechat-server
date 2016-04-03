@@ -12,8 +12,6 @@ __author__ = 'qingfeng'
 if __name__ == "__main__":
     plugin_manager = PluginManager()
     plugin_manager.load_plugins()
-    responseStr = Hook().listen("receive_message", "test")
-    print(responseStr)
     application = tornado.web.Application(
         handlers=urls,
         **settings
