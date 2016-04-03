@@ -3,6 +3,7 @@
 import tornado.ioloop
 import tornado.web
 from setting import settings
+from wechat.hook import Hook
 from wechat.plugin_manager import PluginManager
 from wechat.route import urls
 
@@ -11,6 +12,8 @@ __author__ = 'qingfeng'
 if __name__ == "__main__":
     plugin_manager = PluginManager()
     plugin_manager.load_plugins()
+    responseStr = Hook().listen("receive_message", "test")
+    print(responseStr)
     application = tornado.web.Application(
         handlers=urls,
         **settings

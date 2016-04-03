@@ -4,11 +4,11 @@
 __author__ = 'qingfeng'
 
 
-class WechatServerException(Exception):
+class WeChatServerException(Exception):
     """异常基类"""
     pass
 
 
-class ParseError(WechatServerException):
+class ParseError(WeChatServerException):
     """解析微信服务器数据异常"""
     pass

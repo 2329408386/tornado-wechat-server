@@ -2,16 +2,16 @@
 # coding=utf-8
 
 import time
-from wechat.messages import WechatMessage
+from wechat.messages import WeChatMessage
 
 __author__ = 'doraemonext'
 
 
-class WechatReply(object):
+class WeChatReply(object):
     def __init__(self, message=None, **kwargs):
-        if 'source' not in kwargs and isinstance(message, WechatMessage):
+        if 'source' not in kwargs and isinstance(message, WeChatMessage):
             kwargs['source'] = message.target
-        if 'target' not in kwargs and isinstance(message, WechatMessage):
+        if 'target' not in kwargs and isinstance(message, WeChatMessage):
             kwargs['target'] = message.source
         if 'time' not in kwargs:
             kwargs['time'] = int(time.time())
@@ -24,7 +24,7 @@ class WechatReply(object):
         raise NotImplementedError()
 
 
-class TextReply(WechatReply):
+class TextReply(WeChatReply):
     """
     回复文字消息
     """

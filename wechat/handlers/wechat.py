@@ -9,16 +9,16 @@ from ..hook import Hook
 __author__ = 'qingfeng'
 
 
-class WechatHandler(BaseHandler):
+class WeChatHandler(BaseHandler):
     responseStr = ""
 
     def data_received(self, chunk):
         pass
 
     def get(self, *args, **kwargs):
-        echostr = self.get_argument('echostr', '')
+        echo_str = self.get_argument('echostr', '')
         if self.check_signature():
-            self.write(echostr)
+            self.write(echo_str)
         else:
             self.write(self.responseStr)
 
@@ -26,10 +26,10 @@ class WechatHandler(BaseHandler):
         signature = self.get_argument('signature', '')
         timestamp = self.get_argument('timestamp', '')
         nonce = self.get_argument('nonce', '')
-        tmpArray = [TOKEN, timestamp, nonce]
-        tmpArray.sort()
+        tmp_array = [TOKEN, timestamp, nonce]
+        tmp_array.sort()
         m = hashlib.sha1()
-        map(m.update, tmpArray)
+        map(m.update, tmp_array)
         hashcode = m.hexdigest()
         if hashcode == signature:
             return True
