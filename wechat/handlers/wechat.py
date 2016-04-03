@@ -3,9 +3,8 @@
 import hashlib
 from configs import TOKEN
 from ..core.handler import BaseHandler
-from ..messages import MESSAGE_TYPES, UnknownMessage
-from ..reply import TextReply
 from ..lib.parser import XMLStore
+from ..hook import Hook
 
 __author__ = 'qingfeng'
 
@@ -43,11 +42,13 @@ class WechatHandler(BaseHandler):
 
         xml_str = XMLStore(xmlstring=xml_data)
         result = xml_str.xml2dict
-        print(result)
+
         result['type'] = result.pop('MsgType').lower()
 
-        message_type = MESSAGE_TYPES.get(result['type'], UnknownMessage)
-        message = message_type(result)
-        self.responseStr = TextReply(message, message.source).render()
+        self.responseStr = Hook().listen("receive_message", result)
+
+        # message_type = MESSAGE_TYPES.get(result['type'], UnknownMessage)
+        # message = message_type(result)
+        # self.responseStr = TextReply(message, message.source).render()
+
         self.write(self.responseStr)
-        pass

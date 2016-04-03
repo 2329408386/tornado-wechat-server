@@ -3,9 +3,10 @@
 
 __author__ = 'qingfeng'
 
+
 class BasePlugin(object):
     """
-    "插件需要有name，description，version，author属性，默认为空，是否启用。钩子名称。
+    "插件需要有name，description，version，author属性，默认为空。__type__。
     """
     name = ""
     description = ""
