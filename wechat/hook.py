@@ -16,7 +16,7 @@ class Hook(object):
                 for i in hook_list:
                     module = __import__(hook_list[i])
                     result = module.run(message)
-                    if not result:
+                    if result:
                         return result
         else:
             return False
