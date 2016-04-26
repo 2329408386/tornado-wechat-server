@@ -19,5 +19,5 @@ class WeatherPlugin(BasePlugin):
         print(message)
         message_type = MESSAGE_TYPES.get(message['type'], TextMessage)
         result = message_type(message)
-        return TextReply(result, u'Hello,你是逗比,你刚才说 %s' % result.content).render()
+        return TextReply(result, u'Hello,你是逗比,你刚才说%s' % result.content).render()
         # return message
